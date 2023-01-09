@@ -60,6 +60,7 @@ void ThreePlayer(){
 
     //開局一人發七張牌
     SetupThreePlayerCard();
+
     while (WhoWin == -1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
@@ -77,10 +78,6 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            // if(player1 == NULL){
-            //     WhoWin = 0;
-            //     break;
-            // }
         }
         
         //玩家2出牌
@@ -105,10 +102,6 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            // if(player2 == NULL){
-            //     WhoWin = 1;
-            //     break;
-            // }
         }
         
         //玩家3出牌
@@ -133,10 +126,6 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            // if(player3 == NULL){
-            //     WhoWin = 2;
-            //     break;
-            // }
         }
         GameOver(3);
         printf("上一位玩家出的牌 : ");
@@ -164,12 +153,14 @@ void ThreePlayer(){
 //四人模式
 void FourPlayer(){
     PlayerNumber = 4;
+    RevserseOrNot = 0;
     int player_amount = (int) sizeof(four_player_order) / sizeof(four_player_order[0]);
+    
     void initialize();
     
     //打亂順序
     ShuffleOrder(four_player_order, player_amount);
-
+    printf("出牌順序為:");
     for(i = 0; i < 4; i++){
         if(four_player_order[i] == 0){
             printf("玩家1 ");
@@ -196,6 +187,7 @@ void FourPlayer(){
     
     //開局一人發七張牌
     SetupFourPlayerCard();
+
     while (WhoWin == -1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
