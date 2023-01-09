@@ -22,7 +22,7 @@ void ComputerCurrentCard(node *player);
 
 int i, j;
 int WhoWin = -1;//誰獲勝 -1:遊戲繼續
-int RevserseOrNot = 0;//1 : 執行迴轉;
+int RevserseOrNot = 0;
 
 
 
@@ -61,7 +61,7 @@ void ThreePlayer(){
 
     //開局一人發七張牌
     SetupThreePlayerCard();
-    while (GameOver(3) == 0){
+    while (1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
         printf("order = %d\n", order);
@@ -77,6 +77,10 @@ void ThreePlayer(){
                 }else if(RevserseOrNot == 1){
                     RevserseOrNot = 0;
                 }
+            }
+            if(player1 == NULL){
+                WhoWin = 0;
+                break;
             }
         }
         
@@ -104,6 +108,10 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
+            if(player2 == NULL){
+                WhoWin = 1;
+                break;
+            }
         }
         
         //玩家3出牌
@@ -130,6 +138,10 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
+            if(player3 == NULL){
+                WhoWin = 2;
+                break;
+            }
         }
 
         printf("上一位玩家出的牌 : ");
@@ -143,7 +155,6 @@ void ThreePlayer(){
         }
         
     }
-    
     //獲勝玩家
     if(WhoWin == 0){
         printf("\033[1;33m恭喜您獲勝!\n\033[m");
@@ -164,12 +175,33 @@ void FourPlayer(){
     //打亂順序
     ShuffleOrder(four_player_order, player_amount);
 
+    for(i = 0; i < 4; i++){
+        if(four_player_order[i] == 0){
+            printf("玩家1 ");
+        }else if(four_player_order[i] == 1){
+            printf("玩家2 ");
+        }else if(four_player_order[i] == 2){
+            printf("玩家3 ");
+        }else if(four_player_order[i] == 3){
+            printf("玩家4 ");
+        }
+    }
+    printf("\n您為玩家1\n");
+
     SetUpDeck();
     ShuffleDeck(stack, 108);
+    while((stack[top].name == wild) || (stack[top].name == wild_draw_four)){
+        ShuffleDeck(stack, 108);
+    }
+    //設置底牌
+    UsedCard = DrawOne(UsedCard);
+    printf("底牌是: ");
+    PrintCard(UsedCard);
+    printf("\n");
     
     //開局一人發七張牌
-    SetupThreePlayerCard();
-    while (GameOver(4) == 0){
+    SetupFourPlayerCard();
+    while (1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
         printf("order = %d\n", order);
@@ -178,31 +210,108 @@ void FourPlayer(){
         if(four_player_order[order] == 0){
             PlayerInput();
             SpecialCardFunction(player1, drawNumber, four_player_order, &order, PlayerNumber);
+            //迴轉
+            if(drawNumber == 6){
+                if(RevserseOrNot == 0){
+                    RevserseOrNot = 1;
+                }else if(RevserseOrNot == 1){
+                    RevserseOrNot = 0;
+                }
+            }
+            if(player1 == NULL){
+                WhoWin = 0;
+                break;
+            }
         }
         
         //玩家2出牌
         else if(four_player_order[order] == 1){
-            printf("%s\n",G(玩家2手中有:));
-            //printf("");
+            printf("%s\n",G(玩家2原本手中有:));
             ComputerCurrentCard(player2);
             cardpool = computeruser(UsedCard, &player2, &drawNumber);
             if(cardpool == UsedCard){
                 printf("玩家2抽了一張牌\n");
+            }else{
+                printf("玩家2出了");
+                PrintCard(cardpool);
+                printf("\n");
             }
             UsedCard = cardpool;
+            SpecialCardFunction(player2, drawNumber, four_player_order, &order, PlayerNumber);
+            // printf("%s\n",G(玩家2現在手中有:));
+            // ComputerCurrentCard(player2);
+            //迴轉
+            if(drawNumber == 6){
+                if(RevserseOrNot == 0){
+                    RevserseOrNot = 1;
+                }else if(RevserseOrNot == 1){
+                    RevserseOrNot = 0;
+                }
+            }
+            if(player2 == NULL){
+                WhoWin = 1;
+                break;
+            }
         }
         
         //玩家3出牌
         else if(four_player_order[order] == 2){
-            printf("%s\n",B(玩家3手中有:));
-            //printf("");
+            printf("%s\n",B(玩家3原本手中有:));
             ComputerCurrentCard(player3);
-            //printf("%s\n",R(玩家3出牌設定中......));
+            cardpool = computeruser(UsedCard, &player3, &drawNumber);
+            if(cardpool == UsedCard){
+                printf("玩家3抽了一張牌\n");
+            }else{
+                printf("玩家3出了");
+                PrintCard(cardpool);
+                printf("\n");
+            }
+            UsedCard = cardpool;
+            SpecialCardFunction(player3, drawNumber, four_player_order, &order, PlayerNumber);
+            // printf("%s\n",B(玩家3現在手中有:));
+            // ComputerCurrentCard(player3);
+            //迴轉
+            if(drawNumber == 6){
+                if(RevserseOrNot == 0){
+                    RevserseOrNot = 1;
+                }else if(RevserseOrNot == 1){
+                    RevserseOrNot = 0;
+                }
+            }
+            if(player3 == NULL){
+                WhoWin = 2;
+                break;
+            }
         }
 
         //玩家4出牌
         else if(four_player_order[order] == 3){
-
+            printf("%s\n",Y(玩家4原本手中有:));
+            ComputerCurrentCard(player4);
+            cardpool = computeruser(UsedCard, &player4, &drawNumber);
+            if(cardpool == UsedCard){
+                printf("玩家4抽了一張牌\n");
+            }else{
+                printf("玩家4出了");
+                PrintCard(cardpool);
+                printf("\n");
+            }
+            UsedCard = cardpool;
+            SpecialCardFunction(player4, drawNumber, four_player_order, &order, PlayerNumber);
+            // printf("%s\n",B(玩家3現在手中有:));
+            // ComputerCurrentCard(player3);
+            //迴轉
+            if(drawNumber == 6){
+                if(RevserseOrNot == 0){
+                    RevserseOrNot = 1;
+                }else if(RevserseOrNot == 1){
+                    RevserseOrNot = 0;
+                }
+            }
+            if(player4 == NULL){
+                WhoWin = 3;
+                break;
+            }
         }
         printf("上一位玩家出的牌 : ");
         PrintCard(UsedCard);

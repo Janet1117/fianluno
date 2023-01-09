@@ -13,7 +13,7 @@ node *DrawOne(node *player);//加一張牌
 void DrawTwo(int *playerOrder, int orderNumber, int playerAmount);
 void DrawFour(int *playerOrder, int orderNumber, int playerAmount);
 
-
+int RevserseOrNot = 0;
 
 
 //執行功能牌功能  格式(以玩家2為): SpecialCardFunction(player2, draw, ); 其他3個參數我來填
@@ -70,6 +70,11 @@ node *DrawOne(node *player){
 //+2
 void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
     int next = orderNumber;
+    if(RevserseOrNot % 2 == 0){
+        next = (playerAmount - 1) ? 0 : next + 1;
+    }else{
+        order = (order == 0) ? (playerAmount - 1) : (order - 1);
+    }
     next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
         for(i = 0; i < 2; i++){
@@ -93,7 +98,11 @@ void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
 //+4
 void DrawFour(int *playerOrder, int orderNumber, int playerAmount){
     int next = orderNumber;
-    next = (playerAmount - 1) ? 0 : next + 1;
+    if(RevserseOrNot % 2 == 0){
+        next = (playerAmount - 1) ? 0 : next + 1;
+    }else{
+        order = (order == 0) ? (playerAmount - 1) : (order - 1);
+    }
     if(playerOrder[next] == 0){
         for(i = 0; i < 4; i++){
             player1 = DrawOne(player1);
