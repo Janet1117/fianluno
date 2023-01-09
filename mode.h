@@ -22,7 +22,6 @@ void ComputerCurrentCard(node *player);
 
 int i, j;
 int WhoWin = -1;//誰獲勝 -1:遊戲繼續
-int RevserseOrNot = 0;
 
 
 
