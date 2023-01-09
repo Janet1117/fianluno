@@ -56,6 +56,7 @@ void SetUpDeck(){
         push(data);
         push(data);
     }
+    
 }
 
 //洗牌

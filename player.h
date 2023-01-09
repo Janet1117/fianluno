@@ -40,7 +40,7 @@ int order = 0;//出排順序
 int three_player_order[3] = {0, 1, 2};//出排順序:0代表player1,以此類推
 int four_player_order[4] = {0, 1, 2, 3};//出排順序:0代表player1,以此類推
 
-int RevserseOrNot = 0;//1 : 執行迴轉;
+//int RevserseOrNot = 0;//1 : 執行迴轉;
 
 //真人玩家輸入
 void PlayerInput(){
@@ -106,11 +106,11 @@ void PlayerInput(){
         cardpool = ruleandrenewpokerpile(UsedCard, input, &drawNumber, player1);
         
     }
-    if(PlayerNumber == 3){
-        SpecialCardFunction(player1, drawNumber, three_player_order, &order, PlayerNumber, &RevserseOrNot);
-    }else{
-        SpecialCardFunction(player1, drawNumber, four_player_order, &order, PlayerNumber, &RevserseOrNot);
-    }
+    // if(PlayerNumber == 3){
+    //     SpecialCardFunction(player1, drawNumber, three_player_order, &order, PlayerNumber, &RevserseOrNot);
+    // }else{
+    //     SpecialCardFunction(player1, drawNumber, four_player_order, &order, PlayerNumber, &RevserseOrNot);
+    // }
 
 
 
