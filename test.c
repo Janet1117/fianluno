@@ -13,9 +13,9 @@ int i;
 
 int main(){
     
-    ThreePlayer();
+    //ThreePlayer();
 
-    //FourPlayer();
+    FourPlayer();
     
     // SetUpDeck();
     

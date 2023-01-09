@@ -213,10 +213,6 @@ void FourPlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            if(player1 == NULL){
-                WhoWin = 0;
-                break;
-            }
         }
         
         //玩家2出牌
@@ -240,10 +236,6 @@ void FourPlayer(){
                 }else if(RevserseOrNot == 1){
                     RevserseOrNot = 0;
                 }
-            }
-            if(player2 == NULL){
-                WhoWin = 1;
-                break;
             }
         }
         
@@ -269,10 +261,6 @@ void FourPlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            if(player3 == NULL){
-                WhoWin = 2;
-                break;
-            }
         }
 
         //玩家4出牌
@@ -296,10 +284,6 @@ void FourPlayer(){
                 }else if(RevserseOrNot == 1){
                     RevserseOrNot = 0;
                 }
-            }
-            if(player4 == NULL){
-                WhoWin = 3;
-                break;
             }
         }
         GameOver(4);
