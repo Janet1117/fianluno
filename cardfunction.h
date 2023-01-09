@@ -77,7 +77,7 @@ void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
     if(RevserseOrNot % 2 == 0){
         next = (playerAmount - 1) ? 0 : next + 1;
     }else{
-        next = (next == 0) ? (playerAmount - 1) : (next - 1);
+        next = 0 ? (playerAmount - 1) : (next - 1);
     }
     next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
@@ -105,7 +105,7 @@ void DrawFour(int *playerOrder, int orderNumber, int playerAmount){
     if(RevserseOrNot % 2 == 0){
         next = (playerAmount - 1) ? 0 : next + 1;
     }else{
-        next = (next == 0) ? (playerAmount - 1) : (next - 1);
+        next = 0 ? (playerAmount - 1) : (next - 1);
     }
     if(playerOrder[next] == 0){
         for(i = 0; i < 4; i++){

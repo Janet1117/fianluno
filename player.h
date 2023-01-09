@@ -292,10 +292,18 @@ node *deletecard(node *player, node card){
     tmp = player;
     //printf("card: color = %d  name = %d\n", card.color, card.name);
     if((tmp->color == card.color) && (tmp->name == card.name)){
-        node *p = tmp;
-        tmp = tmp->next;
-        tmp->prev = NULL;
-        return tmp;
+        if(tmp->next == NULL){
+            player = NULL;
+            free(tmp);
+            return player2;
+        }else{
+            node *p = tmp;
+            tmp = tmp->next;
+            tmp->prev = NULL;
+            free(p);
+            return tmp;
+        }
+        
     }else{
         while((tmp->color != card.color) || (tmp->name != card.name)){
             tmp = tmp->next;
