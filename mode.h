@@ -50,9 +50,9 @@ void ThreePlayer(){
 
     SetUpDeck();
     ShuffleDeck(stack, 108);
-    // while((stack[top].name == wild) || (stack[top].name == wild_draw_four)){
-    //     ShuffleDeck(stack, 108);
-    // }
+    while((stack[top].name == wild) || (stack[top].name == wild_draw_four)){
+        ShuffleDeck(stack, 108);
+    }
     //設置底牌
     UsedCard = DrawOne(UsedCard);
     printf("底牌是: ");
