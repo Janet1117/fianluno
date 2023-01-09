@@ -97,8 +97,6 @@ void ThreePlayer(){
             }
             UsedCard = cardpool;
             SpecialCardFunction(drawNumber, three_player_order, &order, PlayerNumber);
-            // printf("%s\n",G(玩家2現在手中有:));
-            // ComputerCurrentCard(player2);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -127,8 +125,6 @@ void ThreePlayer(){
             }
             UsedCard = cardpool;
             SpecialCardFunction(drawNumber, three_player_order, &order, PlayerNumber);
-            // printf("%s\n",B(玩家3現在手中有:));
-            // ComputerCurrentCard(player3);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -237,8 +233,6 @@ void FourPlayer(){
             }
             UsedCard = cardpool;
             SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
-            // printf("%s\n",G(玩家2現在手中有:));
-            // ComputerCurrentCard(player2);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -267,8 +261,6 @@ void FourPlayer(){
             }
             UsedCard = cardpool;
             SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
-            // printf("%s\n",B(玩家3現在手中有:));
-            // ComputerCurrentCard(player3);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -297,8 +289,6 @@ void FourPlayer(){
             }
             UsedCard = cardpool;
             SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
-            // printf("%s\n",B(玩家3現在手中有:));
-            // ComputerCurrentCard(player3);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -398,7 +388,6 @@ void SetupFourPlayerCard(){
 }
 
 void ComputerCurrentCard(node *player){
-    //printf("您有:");
     node *tmp;
     tmp = player;
     while (tmp != NULL){

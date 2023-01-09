@@ -5,27 +5,24 @@
 #include"node.h"
 #include"stack.h"
 #include"setupplayer.h"
-//#include"player.h"
 
 void SpecialCardFunction(int draw, int *PlayerOrder, int *OrderNumber, int playerAmount);
-//void Reverse3(int *player_order, int player_number);
 node *DrawOne(node *player);//加一張牌
-void DrawTwo(int *playerOrder, int orderNumber, int playerAmount);
-void DrawFour(int *playerOrder, int orderNumber, int playerAmount);
+void DrawTwo(int *playerOrder, int *orderNumber, int playerAmount);
+void DrawFour(int *playerOrder, int *orderNumber, int playerAmount);
 
 int RevserseOrNot = 0;
 
 
-//執行功能牌功能  格式(以玩家2為): SpecialCardFunction(player2, draw, ); 其他3個參數我來填
+//執行功能牌功能  
 void SpecialCardFunction(int draw, int *PlayerOrder, int *OrderNumber, int playerAmount){
-    // *rev = 0;//初始化
     //+2
     if(draw == 2){
-        DrawTwo(PlayerOrder, *OrderNumber, playerAmount);
+        DrawTwo(PlayerOrder, OrderNumber, playerAmount);
     }
     //+4
     else if(draw == 4){
-        DrawFour(PlayerOrder, *OrderNumber, playerAmount);
+        DrawFour(PlayerOrder, OrderNumber, playerAmount);
     }
     //skip
     else if(draw == 5){
@@ -35,15 +32,6 @@ void SpecialCardFunction(int draw, int *PlayerOrder, int *OrderNumber, int playe
             *OrderNumber = (*OrderNumber == 0) ? playerAmount - 1 : (*OrderNumber - 1); 
         }
     }
-    // //reverse
-    // else if(draw == 6){
-    //     printf("rev = %d\n", *rev);
-    //     if(*rev == 1){
-    //         *rev = 0;
-    //     }else if(*rev == 0){
-    //         *rev = 1;
-    //     }
-    // }
 }
 
 //加一張牌
@@ -72,14 +60,15 @@ node *DrawOne(node *player){
 }
 
 //+2
-void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
-    int next = orderNumber;
+void DrawTwo(int *playerOrder, int *orderNumber, int playerAmount){
+    int next = *orderNumber;
     if(RevserseOrNot % 2 == 0){
         next = (next == playerAmount - 1) ? 0 : (next + 1);
+        printf("r = 0, next = %d, order[next] = %d\n", next, playerOrder[next]);
     }else{
         next = (next == 0) ? (playerAmount - 1) : (next - 1);
+        printf("r = 1, next = %d, order[next] = %d\n", next, playerOrder[next]);
     }
-    next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
         for(i = 0; i < 2; i++){
             player1 = DrawOne(player1);
@@ -100,12 +89,14 @@ void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
 }
 
 //+4
-void DrawFour(int *playerOrder, int orderNumber, int playerAmount){
-    int next = orderNumber;
+void DrawFour(int *playerOrder, int *orderNumber, int playerAmount){
+    int next = *orderNumber;
     if(RevserseOrNot % 2 == 0){
         next = (next == playerAmount - 1) ? 0 : (next + 1);
+        printf("r = 0, next = %d, order[next] = %d\n", next, playerOrder[next]);
     }else{
         next = (next == 0) ? (playerAmount - 1) : (next - 1);
+        printf("r = 1, next = %d, order[next] = %d\n", next, playerOrder[next]);
     }
     if(playerOrder[next] == 0){
         for(i = 0; i < 4; i++){
