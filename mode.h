@@ -15,7 +15,7 @@ void initialize();
 void SetupThreePlayerCard();
 void SetupFourPlayerCard();
 
-int GameOver(int PlayerAmount);
+void GameOver(int PlayerAmount);
 
 void ComputerCurrentCard(node *player);
 
@@ -60,7 +60,7 @@ void ThreePlayer(){
 
     //開局一人發七張牌
     SetupThreePlayerCard();
-    while (1){
+    while (WhoWin == -1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
         printf("order = %d\n", order);
@@ -77,10 +77,10 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            if(player1 == NULL){
-                WhoWin = 0;
-                break;
-            }
+            // if(player1 == NULL){
+            //     WhoWin = 0;
+            //     break;
+            // }
         }
         
         //玩家2出牌
@@ -105,10 +105,10 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            if(player2 == NULL){
-                WhoWin = 1;
-                break;
-            }
+            // if(player2 == NULL){
+            //     WhoWin = 1;
+            //     break;
+            // }
         }
         
         //玩家3出牌
@@ -133,12 +133,12 @@ void ThreePlayer(){
                     RevserseOrNot = 0;
                 }
             }
-            if(player3 == NULL){
-                WhoWin = 2;
-                break;
-            }
+            // if(player3 == NULL){
+            //     WhoWin = 2;
+            //     break;
+            // }
         }
-
+        GameOver(3);
         printf("上一位玩家出的牌 : ");
         PrintCard(UsedCard);
         printf("\n");
@@ -196,7 +196,7 @@ void FourPlayer(){
     
     //開局一人發七張牌
     SetupFourPlayerCard();
-    while (1){
+    while (WhoWin == -1){
         
         printf("ReverseOrNot = %d    ", RevserseOrNot);
         printf("order = %d\n", order);
@@ -302,6 +302,7 @@ void FourPlayer(){
                 break;
             }
         }
+        GameOver(4);
         printf("上一位玩家出的牌 : ");
         PrintCard(UsedCard);
         printf("\n");
@@ -340,7 +341,7 @@ void initialize(){
 
 
 //遊戲結束 1:遊戲結束,0:遊戲繼續
-int GameOver(int PlayerAmount){
+void GameOver(int PlayerAmount){
     WhoWin = -1;
     if(PlayerAmount == 3){
         if(player1 == NULL){
@@ -358,13 +359,8 @@ int GameOver(int PlayerAmount){
         }else if(player3 == NULL){
             WhoWin = 2;
         }else if(player4 == NULL){
-            WhoWin = 4;
+            WhoWin = 3;
         }
-    }
-    if(WhoWin != -1){
-        return 1;
-    }else{
-        return 0;
     }
 }
 
