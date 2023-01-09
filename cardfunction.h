@@ -69,7 +69,8 @@ node *DrawOne(node *player){
 
 //+2
 void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
-    int next = orderNumber + 1;
+    int next = orderNumber;
+    next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
         for(i = 0; i < 2; i++){
             player1 = DrawOne(player1);
@@ -91,7 +92,8 @@ void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
 
 //+4
 void DrawFour(int *playerOrder, int orderNumber, int playerAmount){
-    int next = orderNumber + 1;
+    int next = orderNumber;
+    next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
         for(i = 0; i < 4; i++){
             player1 = DrawOne(player1);

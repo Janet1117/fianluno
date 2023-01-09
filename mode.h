@@ -87,11 +87,15 @@ void ThreePlayer(){
             cardpool = computeruser(UsedCard, &player2, &drawNumber);
             if(cardpool == UsedCard){
                 printf("玩家2抽了一張牌\n");
+            }else{
+                printf("玩家2出了");
+                PrintCard(cardpool);
+                printf("\n");
             }
             UsedCard = cardpool;
             SpecialCardFunction(player2, drawNumber, three_player_order, &order, PlayerNumber);
-            printf("%s\n",G(玩家2現在手中有:));
-            ComputerCurrentCard(player2);
+            // printf("%s\n",G(玩家2現在手中有:));
+            // ComputerCurrentCard(player2);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -109,11 +113,15 @@ void ThreePlayer(){
             cardpool = computeruser(UsedCard, &player3, &drawNumber);
             if(cardpool == UsedCard){
                 printf("玩家3抽了一張牌\n");
+            }else{
+                printf("玩家3出了");
+                PrintCard(cardpool);
+                printf("\n");
             }
             UsedCard = cardpool;
             SpecialCardFunction(player3, drawNumber, three_player_order, &order, PlayerNumber);
-            printf("%s\n",B(玩家3現在手中有:));
-            ComputerCurrentCard(player3);
+            // printf("%s\n",B(玩家3現在手中有:));
+            // ComputerCurrentCard(player3);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
