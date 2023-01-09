@@ -29,7 +29,11 @@ void SpecialCardFunction(node *player, int draw, int *PlayerOrder, int *OrderNum
     }
     //skip
     else if(draw == 5){
-        *OrderNumber = (*OrderNumber == playerAmount - 1) ? 0 : (*OrderNumber + 1); 
+        if(RevserseOrNot % 2 == 0){
+            *OrderNumber = (*OrderNumber == playerAmount - 1) ? 0 : (*OrderNumber + 1);
+        }else{
+            *OrderNumber = (*OrderNumber == 0) ? playerAmount - 1 : (*OrderNumber - 1); 
+        }
     }
     // //reverse
     // else if(draw == 6){
