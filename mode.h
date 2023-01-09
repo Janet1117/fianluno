@@ -68,7 +68,7 @@ void ThreePlayer(){
         //真人玩家出牌
         if(three_player_order[order] == 0){
             PlayerInput();
-            SpecialCardFunction(player1, drawNumber, three_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, three_player_order, &order, PlayerNumber);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -96,7 +96,7 @@ void ThreePlayer(){
                 printf("\n");
             }
             UsedCard = cardpool;
-            SpecialCardFunction(player2, drawNumber, three_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, three_player_order, &order, PlayerNumber);
             // printf("%s\n",G(玩家2現在手中有:));
             // ComputerCurrentCard(player2);
             //迴轉
@@ -126,7 +126,7 @@ void ThreePlayer(){
                 printf("\n");
             }
             UsedCard = cardpool;
-            SpecialCardFunction(player3, drawNumber, three_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, three_player_order, &order, PlayerNumber);
             // printf("%s\n",B(玩家3現在手中有:));
             // ComputerCurrentCard(player3);
             //迴轉
@@ -208,7 +208,7 @@ void FourPlayer(){
         //真人玩家出牌
         if(four_player_order[order] == 0){
             PlayerInput();
-            SpecialCardFunction(player1, drawNumber, four_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
             //迴轉
             if(drawNumber == 6){
                 if(RevserseOrNot == 0){
@@ -236,7 +236,7 @@ void FourPlayer(){
                 printf("\n");
             }
             UsedCard = cardpool;
-            SpecialCardFunction(player2, drawNumber, four_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
             // printf("%s\n",G(玩家2現在手中有:));
             // ComputerCurrentCard(player2);
             //迴轉
@@ -266,7 +266,7 @@ void FourPlayer(){
                 printf("\n");
             }
             UsedCard = cardpool;
-            SpecialCardFunction(player3, drawNumber, four_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
             // printf("%s\n",B(玩家3現在手中有:));
             // ComputerCurrentCard(player3);
             //迴轉
@@ -296,7 +296,7 @@ void FourPlayer(){
                 printf("\n");
             }
             UsedCard = cardpool;
-            SpecialCardFunction(player4, drawNumber, four_player_order, &order, PlayerNumber);
+            SpecialCardFunction(drawNumber, four_player_order, &order, PlayerNumber);
             // printf("%s\n",B(玩家3現在手中有:));
             // ComputerCurrentCard(player3);
             //迴轉

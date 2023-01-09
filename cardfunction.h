@@ -7,7 +7,7 @@
 #include"setupplayer.h"
 //#include"player.h"
 
-void SpecialCardFunction(node *player, int draw, int *PlayerOrder, int *OrderNumber, int playerAmount);
+void SpecialCardFunction(int draw, int *PlayerOrder, int *OrderNumber, int playerAmount);
 //void Reverse3(int *player_order, int player_number);
 node *DrawOne(node *player);//加一張牌
 void DrawTwo(int *playerOrder, int orderNumber, int playerAmount);
@@ -17,7 +17,7 @@ int RevserseOrNot = 0;
 
 
 //執行功能牌功能  格式(以玩家2為): SpecialCardFunction(player2, draw, ); 其他3個參數我來填
-void SpecialCardFunction(node *player, int draw, int *PlayerOrder, int *OrderNumber, int playerAmount){
+void SpecialCardFunction(int draw, int *PlayerOrder, int *OrderNumber, int playerAmount){
     // *rev = 0;//初始化
     //+2
     if(draw == 2){
@@ -75,9 +75,9 @@ node *DrawOne(node *player){
 void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
     int next = orderNumber;
     if(RevserseOrNot % 2 == 0){
-        next = (playerAmount - 1) ? 0 : next + 1;
+        next = (next == playerAmount - 1) ? 0 : (next + 1);
     }else{
-        next = 0 ? (playerAmount - 1) : (next - 1);
+        next = (next == 0) ? (playerAmount - 1) : (next - 1);
     }
     next = (playerAmount - 1) ? 0 : next + 1;
     if(playerOrder[next] == 0){
@@ -103,9 +103,9 @@ void DrawTwo(int *playerOrder, int orderNumber, int playerAmount){
 void DrawFour(int *playerOrder, int orderNumber, int playerAmount){
     int next = orderNumber;
     if(RevserseOrNot % 2 == 0){
-        next = (playerAmount - 1) ? 0 : next + 1;
+        next = (next == playerAmount - 1) ? 0 : (next + 1);
     }else{
-        next = 0 ? (playerAmount - 1) : (next - 1);
+        next = (next == 0) ? (playerAmount - 1) : (next - 1);
     }
     if(playerOrder[next] == 0){
         for(i = 0; i < 4; i++){
