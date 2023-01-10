@@ -28,7 +28,7 @@ void PrintCard(node *tmp);//印出卡片
 void PlayerCurrentCard();//印出玩家現有的牌
 char InputColor[10];
 char InputName[10];
-char YorN[2] = {};
+char YorN[10] = {};
 node *input = NULL;
 char *pass = "pass";
 
@@ -48,14 +48,14 @@ void PlayerInput(){
     scanf("%s", InputColor);
     if(strcmp(InputColor, pass) == 0){
         player1 = DrawOne(player1);
-        printf("您抽到:");
+        printf("\n您抽到:");
         PrintCard(player1->next);
         printf("\n");
     }else{
         scanf("%s", InputName);
         input = InputToNode(InputColor, InputName);
         printf("您要出的是 ");
-        printf("\033[1m%s%s\n\033[m", InputColor, InputName);
+        printf("\033[1;35;47m%s%s\033[m", InputColor, InputName);
         UserInput.color = input->color;
         UserInput.name = input->name;
         printf(" 這張牌嗎?[y/n]:");
@@ -74,14 +74,14 @@ void PlayerInput(){
         scanf("%s", InputColor);
         if(strcmp(InputColor, pass) == 0){
             player1 = DrawOne(player1);
-            printf("您抽到:");
+            printf("\n您抽到:");
             PrintCard(player1->next);
             printf("\n");
         }else{
             scanf("%s", InputName);
             input = InputToNode(InputColor, InputName);
             printf("您要出的是 ");
-            printf("\033[1m%s%s\n\033[m", InputColor, InputName);
+            printf("\033[1;35;47m%s%s\033[m", InputColor, InputName);
             UserInput.color = input->color;
             UserInput.name = input->name;
             printf(" 這張牌嗎?[y/n]:");
@@ -252,7 +252,7 @@ void PrintCard(node *tmp){
 
 //印出玩家現有的牌
 void PlayerCurrentCard(){
-    printf("您有:");
+    printf("\n您有:");
     node *tmp;
     tmp = player1;
     while (tmp != NULL){
